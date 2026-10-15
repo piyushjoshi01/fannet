@@ -1,6 +1,14 @@
 spring:
   application:
     name: fannet-backend
+  data:
+    mongodb:
+      uri: mongodb://${MONGO_USER:fannet}:${MONGO_PASSWORD:change-me}@localhost:${MONGO_PORT:27017}/fannet?authSource=admin&directConnection=true
+
+mongock:
+  migration-scan-package:
+    - com.fannet.shared.migration
+  transactional: false # index creation is not allowed inside transactions
 
 management:
   endpoints:
