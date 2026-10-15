@@ -1,7 +1,7 @@
 # Progress
 
 **Current phase:** Phase 1 — Foundation (in progress)
-**Next task:** 1.2 Docker Compose (MongoDB Atlas local, Redis, Kafka, MinIO, `.env.example`)
+**Next task:** 1.3 Mongo connection, Mongock set-up and first migration, Testcontainers base test class
 
 Architecture and decisions: `docs/architecture.md`. Tasks marked **[Learn]** get a Learn block before the code and Check-your-understanding questions after it. Each task ends with passing tests and a one-line commit message.
 
@@ -10,12 +10,13 @@ Architecture and decisions: `docs/architecture.md`. Tasks marked **[Learn]** get
 - [x] §12 analysis written to `docs/architecture.md`
 - [x] Phase 1 task list written
 - [x] 1.1 Backend scaffolded (Maven, Spring Boot 3.5.16, Java 21, 14 module packages, health test). Build with JDK 21: `JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home mvn test` in `backend/`
+- [x] 1.2 `docker-compose.yml` (Mongo Atlas local, Redis, Kafka KRaft) all healthy; replica set PRIMARY, Kafka reachable from host. MinIO dropped, see `docs/decisions/0001-object-storage-aws-s3.md`
 
 ## Phase 1 — Foundation
 
 Backend scaffold and infrastructure
 - [x] 1.1 Scaffold the Spring Boot backend (Java 21, modules as empty packages, health endpoint test)
-- [ ] 1.2 Docker Compose: MongoDB Atlas local (replica set), Redis, Kafka, MinIO, plus `.env.example`
+- [x] 1.2 Docker Compose: MongoDB Atlas local (replica set), Redis, Kafka, plus `.env.example` (S3 is real AWS, no MinIO: decision 0001)
 - [ ] 1.3 Mongo connection, Mongock set-up and the first migration, plus the Testcontainers base test class (decision record: Mongock vs startup indexes)
 - [ ] 1.4 Global exception handling, validation, structured logging with trace id
 

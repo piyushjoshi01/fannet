@@ -58,7 +58,7 @@ flowchart LR
     M[(MongoDB replica set\n+ Atlas Vector Search)]
     R[(Redis)]
     K[[Kafka]]
-    S3[(MinIO / S3)]
+    S3[(AWS S3)]
   end
   EXT[RSS / news APIs\nlive event API]
   LLMP[LLM provider]
@@ -333,7 +333,7 @@ All under `/api/v1`. JSON, DTOs, validation, and a uniform error body (`code`, `
 - `mongodb/mongodb-atlas-local` (single-node replica set, vector search)
 - Redis
 - Kafka (single-node KRaft)
-- MinIO (plus a bucket init job)
+- (no object-storage container: real AWS S3, see decision 0001)
 
 The backend and frontend run from the IDE or terminal. Ports and credentials come from `.env`. The compose file also has healthchecks, and a one-time replica-set init is handled by the Atlas local image. Testcontainers reuse the same images for integration tests.
 

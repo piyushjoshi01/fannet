@@ -22,7 +22,7 @@ The full product and architecture brief is in @docs/master-prompt.md. Read it at
 
 - Backend: Java 21, Spring Boot, Spring Security, Spring Data MongoDB, Spring AI
 - Frontend: React, TypeScript, Vite, PWA
-- Data: MongoDB replica set (Atlas local image in Docker), Redis, Kafka, MinIO
+- Data: MongoDB replica set (Atlas local image in Docker), Redis, Kafka, AWS S3 (object storage, see decision 0001)
 - Tests: JUnit 5, Mockito, Testcontainers; Vitest + React Testing Library
 
 ## Rules
@@ -35,7 +35,7 @@ The full product and architecture brief is in @docs/master-prompt.md. Read it at
 ## Commands
 
 (Fill in once the project is scaffolded.)
-- Start infrastructure: `docker compose up -d`
+- Start infrastructure: `cp .env.example .env && docker compose up -d` (fill in AWS keys in `.env`)
 - Backend: 
 - Frontend: 
 - All tests:
