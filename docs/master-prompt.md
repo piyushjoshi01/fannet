@@ -162,8 +162,8 @@ The whole pipeline must be testable without real LLM or network calls.
 - **Real-time:** WebSockets (STOMP) with Redis pub/sub fan-out across instances
 - **Cache:** Redis (feed cache, room pub/sub, rate limits, leaderboards as sorted sets)
 - **Events:** Kafka (single-node locally). **Transactional outbox in MongoDB**: write the business document and an `outbox` document in one transaction; a relay watches the outbox with a **change stream** and publishes to Kafka. Keep topics minimal: `raw-content`, `detected-events`, `agent-decisions`, `post-published`, `live-events`. Justify any additional topic.
-- **Object storage:** S3-compatible (MinIO locally)
-- **Infra:** Docker Compose for MongoDB, Redis, Kafka, MinIO. Backend and frontend run from IDE/terminal.
+- **Object storage:** AWS S3 (see decision 0001)
+- **Infra:** Docker Compose for MongoDB, Redis, Kafka. Backend and frontend run from IDE/terminal.
 - **Beta deployment:** single container host + MongoDB Atlas + S3/CloudFront. Document the AWS evolution path (ECS, ElastiCache, MSK, CloudFront).
 
 ---
