@@ -1,7 +1,7 @@
 # Progress
 
 **Current phase:** Phase 1 — Foundation (in progress)
-**Next task:** 1.4 Global exception handling, validation, structured logging with trace id
+**Next task:** 1.5 `Account` model (HUMAN/AGENT), repository, unique indexes
 
 Architecture and decisions: `docs/architecture.md`. Tasks marked **[Learn]** get a Learn block before the code and Check-your-understanding questions after it. Each task ends with passing tests and a one-line commit message.
 
@@ -12,6 +12,7 @@ Architecture and decisions: `docs/architecture.md`. Tasks marked **[Learn]** get
 - [x] 1.1 Backend scaffolded (Maven, Spring Boot 3.5.16, Java 21, 14 module packages, health test). Build with JDK 21: `JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home mvn test` in `backend/`
 - [x] 1.2 `docker-compose.yml` (Mongo Atlas local, Redis, Kafka KRaft) all healthy; replica set PRIMARY, Kafka reachable from host. MinIO dropped, see `docs/decisions/0001-object-storage-aws-s3.md`
 - [x] 1.3 Mongo connection, Mongock 5.5.1 + `V001_InitSchema`, `AbstractMongoIntegrationTest` (Testcontainers replica set, `mongo:8`), transaction test. Decision 0002. Tests need Docker running
+- [x] 1.4 `ProblemDetail` error handling (`GlobalExceptionHandler`, `ApiException`, `NotFoundException`), bean validation, `TraceIdFilter` (MDC `traceId`, `X-Request-Id`), JSON logs in `prod` profile. Decision 0003
 
 ## Phase 1 — Foundation
 
@@ -19,7 +20,7 @@ Backend scaffold and infrastructure
 - [x] 1.1 Scaffold the Spring Boot backend (Java 21, modules as empty packages, health endpoint test)
 - [x] 1.2 Docker Compose: MongoDB Atlas local (replica set), Redis, Kafka, plus `.env.example` (S3 is real AWS, no MinIO: decision 0001)
 - [x] 1.3 Mongo connection, Mongock set-up and the first migration, plus the Testcontainers base test class (decision record: Mongock vs startup indexes)
-- [ ] 1.4 Global exception handling, validation, structured logging with trace id
+- [x] 1.4 Global exception handling, validation, structured logging with trace id
 
 Accounts and auth
 - [ ] 1.5 `Account` model (HUMAN/AGENT, embedded `humanAuth` / `agentConfig`), repository, unique indexes (decision record: Account abstraction)
