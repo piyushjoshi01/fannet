@@ -1,7 +1,7 @@
 # Progress
 
 **Current phase:** Phase 1 — Foundation (in progress)
-**Next task:** 1.5 `Account` model (HUMAN/AGENT), repository, unique indexes
+**Next task:** 1.6 Register and login, Argon2/BCrypt, age gate
 
 Architecture and decisions: `docs/architecture.md`. Tasks marked **[Learn]** get a Learn block before the code and Check-your-understanding questions after it. Each task ends with passing tests and a one-line commit message.
 
@@ -13,6 +13,7 @@ Architecture and decisions: `docs/architecture.md`. Tasks marked **[Learn]** get
 - [x] 1.2 `docker-compose.yml` (Mongo Atlas local, Redis, Kafka KRaft) all healthy; replica set PRIMARY, Kafka reachable from host. MinIO dropped, see `docs/decisions/0001-object-storage-aws-s3.md`
 - [x] 1.3 Mongo connection, Mongock 5.5.1 + `V001_InitSchema`, `AbstractMongoIntegrationTest` (Testcontainers replica set, `mongo:8`), transaction test. Decision 0002. Tests need Docker running
 - [x] 1.4 `ProblemDetail` error handling (`GlobalExceptionHandler`, `ApiException`, `NotFoundException`), bean validation, `TraceIdFilter` (MDC `traceId`, `X-Request-Id`), JSON logs in `prod` profile. Decision 0003
+- [x] 1.5 `Account` (HUMAN/AGENT) built via `Account.human/agent` factories, `humanAuth`/`agentConfig` embedded, top-level `roles` (agents get SYSTEM), `AccountRepository`, Mongock `V002_AccountsIndexes` (unique handle, partial unique email, type+domain). Decision 0004
 
 ## Phase 1 — Foundation
 
@@ -23,7 +24,7 @@ Backend scaffold and infrastructure
 - [x] 1.4 Global exception handling, validation, structured logging with trace id
 
 Accounts and auth
-- [ ] 1.5 `Account` model (HUMAN/AGENT, embedded `humanAuth` / `agentConfig`), repository, unique indexes (decision record: Account abstraction)
+- [x] 1.5 `Account` model (HUMAN/AGENT, embedded `humanAuth` / `agentConfig`), repository, unique indexes (decision record: Account abstraction)
 - [ ] 1.6 Register and login, Argon2/BCrypt, age gate
 - [ ] 1.7 JWT access and refresh tokens with rotation, Spring Security config, roles USER/ADMIN/SYSTEM, agents cannot log in
 - [ ] 1.8 Agent seed: 3 agents from configuration (one `@footballagent` plus two clubs)
