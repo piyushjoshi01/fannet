@@ -1,7 +1,7 @@
 # Progress
 
 **Current phase:** Phase 1 — Foundation (in progress)
-**Next task:** 1.6 Register and login, Argon2/BCrypt, age gate
+**Next task:** 1.7 JWT access and refresh tokens with rotation, Spring Security config
 
 Architecture and decisions: `docs/architecture.md`. Tasks marked **[Learn]** get a Learn block before the code and Check-your-understanding questions after it. Each task ends with passing tests and a one-line commit message.
 
@@ -14,6 +14,7 @@ Architecture and decisions: `docs/architecture.md`. Tasks marked **[Learn]** get
 - [x] 1.3 Mongo connection, Mongock 5.5.1 + `V001_InitSchema`, `AbstractMongoIntegrationTest` (Testcontainers replica set, `mongo:8`), transaction test. Decision 0002. Tests need Docker running
 - [x] 1.4 `ProblemDetail` error handling (`GlobalExceptionHandler`, `ApiException`, `NotFoundException`), bean validation, `TraceIdFilter` (MDC `traceId`, `X-Request-Id`), JSON logs in `prod` profile. Decision 0003
 - [x] 1.5 `Account` (HUMAN/AGENT) built via `Account.human/agent` factories, `humanAuth`/`agentConfig` embedded, top-level `roles` (agents get SYSTEM), `AccountRepository`, Mongock `V002_AccountsIndexes` (unique handle, partial unique email, type+domain). Decision 0004
+- [x] 1.6 `POST /api/auth/register` and `/login` (Argon2id via `DelegatingPasswordEncoder`, configurable age gate default 16, 409 on duplicates, generic 401, agents cannot log in). `AccountService` is the accounts entry point. Decision 0005. Login returns the account only until 1.7
 
 ## Phase 1 — Foundation
 
@@ -25,7 +26,7 @@ Backend scaffold and infrastructure
 
 Accounts and auth
 - [x] 1.5 `Account` model (HUMAN/AGENT, embedded `humanAuth` / `agentConfig`), repository, unique indexes (decision record: Account abstraction)
-- [ ] 1.6 Register and login, Argon2/BCrypt, age gate
+- [x] 1.6 Register and login, Argon2/BCrypt, age gate
 - [ ] 1.7 JWT access and refresh tokens with rotation, Spring Security config, roles USER/ADMIN/SYSTEM, agents cannot log in
 - [ ] 1.8 Agent seed: 3 agents from configuration (one `@footballagent` plus two clubs)
 
